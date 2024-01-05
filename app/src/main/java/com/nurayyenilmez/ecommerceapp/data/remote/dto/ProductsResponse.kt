@@ -1,4 +1,4 @@
-package com.nurayyenilmez.ecommerceapp.data.model
+package com.nurayyenilmez.ecommerceapp.data.remote.dto
 
 
 import com.google.gson.annotations.SerializedName
@@ -18,4 +18,6 @@ data class ProductsResponse(
     val rating: Rating?,
     @SerializedName("title")
     val title: String?
+
+
 )
