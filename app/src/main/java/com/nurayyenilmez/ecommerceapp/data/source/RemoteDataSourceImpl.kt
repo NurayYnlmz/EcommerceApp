@@ -8,7 +8,7 @@ import javax.inject.Inject
 class RemoteDataSourceImpl @Inject constructor(private val productsApi: ProductsApi) : RemoteDataSource {
 
 
-    override suspend fun getAllCategories():List<ProductsResponse> {
+    override suspend fun getAllCategories():List<String> {
        return productsApi.getAllCategories()
     }
 
@@ -16,7 +16,7 @@ class RemoteDataSourceImpl @Inject constructor(private val productsApi: Products
        return productsApi.getAllProduct()
     }
 
-    override suspend fun singleCategory(category: String): Response<ProductsResponse> {
+    override suspend fun singleCategory(category: String): List<ProductsResponse> {
         return productsApi.singleCategory(category)
     }
 }

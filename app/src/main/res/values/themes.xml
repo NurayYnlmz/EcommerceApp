@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.EcommerceApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.EcommerceApp"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorSecondaryContainer">@color/yellow</item>
+        <item name="colorOnSecondaryContainer">@color/ıcon</item>
     </style>
 
-    <style name="Theme.EcommerceApp" parent="Base.Theme.EcommerceApp" />
+    <style name="Theme.EcommerceApp"
+        parent="Base.Theme.EcommerceApp" />
 </resources>

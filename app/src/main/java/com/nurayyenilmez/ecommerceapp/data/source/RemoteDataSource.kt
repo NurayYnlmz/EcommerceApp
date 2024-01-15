@@ -7,9 +7,9 @@ import retrofit2.http.Path
 
 interface RemoteDataSource {
 
-     suspend fun getAllCategories():List<ProductsResponse>
+     suspend fun getAllCategories():List<String>
 
     suspend fun getAllProduct(): List<ProductsResponse>
 
-    suspend fun singleCategory(@Path("category") category:String):Response<ProductsResponse>
+    suspend fun singleCategory(@Path("category_name") category:String):List<ProductsResponse>
 }

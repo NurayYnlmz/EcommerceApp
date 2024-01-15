@@ -10,11 +10,11 @@ import retrofit2.http.Path
 interface ProductsApi {
 
     @GET("products/categories")
-    suspend fun getAllCategories():List<ProductsResponse>
+    suspend fun getAllCategories():List<String>
 
     @GET("products")
     suspend fun getAllProduct():List<ProductsResponse>
 
-    @GET("/products/category/{category}")
-    suspend fun singleCategory(@Path("category") category:String):Response<ProductsResponse>
+    @GET("/products/category/{category_name}")
+    suspend fun singleCategory(@Path("category_name") category:String):List<ProductsResponse>
 }

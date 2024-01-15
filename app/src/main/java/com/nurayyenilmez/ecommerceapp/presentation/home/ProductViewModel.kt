@@ -4,20 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.annotations.SerializedName
 import com.nurayyenilmez.ecommerceapp.common.ResponseState
 import com.nurayyenilmez.ecommerceapp.data.remote.dto.Rating
+import com.nurayyenilmez.ecommerceapp.domain.GetAllCategoryUseCase
 import com.nurayyenilmez.ecommerceapp.domain.GetAllProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductViewModel @Inject constructor (private val getAllProductUseCase: GetAllProductUseCase)
-    :ViewModel(){
+class ProductViewModel @Inject constructor
+    (private val getAllProductUseCase: GetAllProductUseCase,
+     private val getAllCategoryUseCase: GetAllCategoryUseCase) :ViewModel(){
 
-      private val _productScreenState=MutableLiveData(UiScreenState.initial())
-         val productScreenState: LiveData<UiScreenState> get()=_productScreenState
-
+      private val _productScreenState=MutableLiveData(ProductUiScreenState.initial())
+         val productScreenState: LiveData<ProductUiScreenState> get()=_productScreenState
 
             fun getAllProduct(){
             viewModelScope.launch {
@@ -25,12 +27,12 @@ class ProductViewModel @Inject constructor (private val getAllProductUseCase: Ge
                     when(response){
                         is ResponseState.Error ->{
                             _productScreenState.
-                            postValue(UiScreenState(isError = true, errorMessage =
+                            postValue(ProductUiScreenState(isError = true, errorMessage =
                             response.message))
                         }
 
                           ResponseState.Loading -> {
-                             _productScreenState.postValue(UiScreenState(isLoading = true))
+                             _productScreenState.postValue(ProductUiScreenState(isLoading = true))
                           }
                         is ResponseState.Success -> {
                             val products= mutableListOf<UiProduct>()
@@ -41,21 +43,22 @@ class ProductViewModel @Inject constructor (private val getAllProductUseCase: Ge
                             uiProduct.forEach{
                                 products.add(it)
                             }
-                            _productScreenState.postValue(UiScreenState(products))
+                            _productScreenState.postValue(ProductUiScreenState(products))
                         }
                     }
                 }
             }
         }
     }
-data class UiScreenState(
+
+data class ProductUiScreenState(
     val product: List<UiProduct> = emptyList(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val errorMessage: String? = " "
 ) {
     companion object {
-        fun initial() =UiScreenState(isLoading = true)
+        fun initial() =ProductUiScreenState(isLoading = true)
     }
 }
 data class UiProduct(
@@ -63,5 +66,8 @@ data class UiProduct(
     val title:String?,
     val price:Double?,
     val description: String?,
-    val rating: Rating?
+    val rating: Rating?,
+
 )
+
+
