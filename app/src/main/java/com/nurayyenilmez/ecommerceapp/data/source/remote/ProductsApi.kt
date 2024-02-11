@@ -1,4 +1,4 @@
-package com.nurayyenilmez.ecommerceapp.data.source
+package com.nurayyenilmez.ecommerceapp.data.source.remote
 
 import com.nurayyenilmez.ecommerceapp.data.remote.dto.ProductsResponse
 
@@ -14,6 +14,9 @@ interface ProductsApi {
 
     @GET("products")
     suspend fun getAllProduct():List<ProductsResponse>
+
+    @GET("products/{id}")
+    suspend fun getSingleProduct(@Path("id") id:String):ProductsResponse
 
     @GET("/products/category/{category_name}")
     suspend fun singleCategory(@Path("category_name") category:String):List<ProductsResponse>

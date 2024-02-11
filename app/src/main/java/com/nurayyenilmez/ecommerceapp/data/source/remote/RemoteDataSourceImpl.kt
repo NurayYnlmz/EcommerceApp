@@ -1,11 +1,11 @@
-package com.nurayyenilmez.ecommerceapp.data.source
+package com.nurayyenilmez.ecommerceapp.data.source.remote
 
 import com.nurayyenilmez.ecommerceapp.data.remote.dto.ProductsResponse
 
-import retrofit2.Response
 import javax.inject.Inject
 
-class RemoteDataSourceImpl @Inject constructor(private val productsApi: ProductsApi) : RemoteDataSource {
+class RemoteDataSourceImpl @Inject constructor(private val productsApi: ProductsApi) :
+    RemoteDataSource {
 
 
     override suspend fun getAllCategories():List<String> {
@@ -14,6 +14,10 @@ class RemoteDataSourceImpl @Inject constructor(private val productsApi: Products
 
     override suspend fun getAllProduct(): List<ProductsResponse> {
        return productsApi.getAllProduct()
+    }
+
+    override suspend fun getSingleProduct(id: String): ProductsResponse{
+        return productsApi.getSingleProduct(id)
     }
 
     override suspend fun singleCategory(category: String): List<ProductsResponse> {

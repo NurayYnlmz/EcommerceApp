@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> navController.navigate(R.id.productListFragment)
-                R.id.category -> navController.navigate(R.id.categoryFragment)
+                R.id.favorites->navController.navigate(R.id.favoritesFragment)
+
 
             }
             true
@@ -48,10 +49,15 @@ class MainActivity : AppCompatActivity() {
             navController.addOnDestinationChangedListener{_,destination,_ ->
                 when(destination.id){
                     R.id.productListFragment,
-                        R.id.categoryFragment ->{
+                        R.id.favoritesFragment->{
                             binding.bottomNav.visibility=View.VISIBLE
                     }
+                    else ->{
+                            binding.bottomNav.visibility=View.GONE
+
                 }
+
+            }
 
             }
 

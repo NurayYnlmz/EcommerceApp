@@ -1,6 +1,6 @@
 package com.nurayyenilmez.ecommerceapp.di
 
-import com.nurayyenilmez.ecommerceapp.data.source.ProductsApi
+import com.nurayyenilmez.ecommerceapp.data.source.remote.ProductsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,7 +27,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideProductApi(retrofit: Retrofit):ProductsApi{
+    fun provideProductApi(retrofit: Retrofit): ProductsApi {
         return retrofit.create(ProductsApi::class.java)
 
     }
