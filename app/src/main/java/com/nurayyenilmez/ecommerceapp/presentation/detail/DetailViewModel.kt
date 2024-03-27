@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nurayyenilmez.ecommerceapp.common.ResponseState
-import com.nurayyenilmez.ecommerceapp.data.model.ProductListUi
+import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
 import com.nurayyenilmez.ecommerceapp.data.remote.dto.Rating
+import com.nurayyenilmez.ecommerceapp.domain.AddCartProductUseCase
 import com.nurayyenilmez.ecommerceapp.domain.AddFavoritesUseCase
 import com.nurayyenilmez.ecommerceapp.domain.DeleteFavoritesUseCase
 import com.nurayyenilmez.ecommerceapp.domain.GetFavoritesUseCase
@@ -23,6 +24,7 @@ class DetailViewModel @Inject constructor(
     private val addFavoritesUseCase: AddFavoritesUseCase,
     private val getFavoritesUseCase: GetFavoritesUseCase,
     private val deleteFavoritesUseCase: DeleteFavoritesUseCase,
+     private val addCartProductUseCase: AddCartProductUseCase
 ) : ViewModel() {
 
     private val _productDetailUiState = MutableLiveData<ProductDetailUiState>()
@@ -75,7 +77,7 @@ class DetailViewModel @Inject constructor(
 
     }
 
-    private fun updateFavoriteProduct(favorite: Boolean, product: ProductListUi) {
+    private fun updateFavoriteProduct(favorite: Boolean, product: ProductUi) {
         viewModelScope.launch {
             if (favorite) {
                 deleteFavoritesUseCase(product)
@@ -84,6 +86,13 @@ class DetailViewModel @Inject constructor(
             }
         }
     }
+
+        fun addCartProduct(product: ProductUi){
+            viewModelScope.launch {
+                addCartProductUseCase(product)
+            }
+
+        }
 
 }
 

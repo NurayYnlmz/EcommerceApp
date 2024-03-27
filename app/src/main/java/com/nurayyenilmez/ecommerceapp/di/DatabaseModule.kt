@@ -2,8 +2,9 @@ package com.nurayyenilmez.ecommerceapp.di
 
 import android.content.Context
 import androidx.room.Room
+import com.nurayyenilmez.ecommerceapp.data.local.CartDao
+import com.nurayyenilmez.ecommerceapp.data.local.EcommerceDatabase
 import com.nurayyenilmez.ecommerceapp.data.local.FavoriteDao
-import com.nurayyenilmez.ecommerceapp.data.local.FavoriteDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,16 +17,24 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
-       @Provides
-       @Singleton
-       fun provideFavoritesDb(@ApplicationContext context: Context): FavoriteDatabase
-       =Room.databaseBuilder(context = context,
-       klass = FavoriteDatabase::class.java,
-       name = "favorite_database").build()
+    @Provides
+    @Singleton
+    fun provideFavoritesDb(@ApplicationContext context: Context): EcommerceDatabase =
+        Room.databaseBuilder(
+            context = context,
+            klass = EcommerceDatabase::class.java,
+            name = "e_commerce"
+        ).build()
 
-       @Provides
-       @Singleton
-       fun provideFavoriteDao(favoriteDatabase: FavoriteDatabase): FavoriteDao =
+    @Provides
+    @Singleton
+    fun provideFavoriteDao(favoriteDatabase: EcommerceDatabase): FavoriteDao =
         favoriteDatabase.favoriteDao()
 
-       }
+    @Provides
+    @Singleton
+    fun provideCartDao(cartDatabase:EcommerceDatabase): CartDao =
+        cartDatabase.cartDao()
+
+
+}

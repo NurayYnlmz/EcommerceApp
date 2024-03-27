@@ -10,9 +10,9 @@
         android:icon="@drawable/favorite"
         android:title="Favorites" />
     <item
-        android:id="@+id/bag"
+        android:id="@+id/cart"
         android:icon="@drawable/shopping_cart"
-        android:title="Bag" />
+        android:title="Basket" />
 
     <item
         android:id="@+id/profile"

@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.nurayyenilmez.ecommerceapp.data.model.ProductListUi
+import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
 import com.nurayyenilmez.ecommerceapp.databinding.FragmentFavoritesBinding
+import com.nurayyenilmez.ecommerceapp.presentation.cart.adapter.CartProductAdapter
 import com.nurayyenilmez.ecommerceapp.presentation.favorites.adapter.FavoriteProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,6 +37,7 @@ class FavoritesFragment : Fragment() {
         observeData()
         initAdapter()
 
+
     }
 
     private fun getAllFavoriteProduct() {
@@ -53,14 +55,13 @@ class FavoritesFragment : Fragment() {
 
     private fun initAdapter() {
         binding.favoriteRecyclerView.adapter = favoriteAdapter
-
         favoriteAdapter.setOnFavoriteDeleteClickListener {
             AlertDialog.Builder(requireContext())
                 .setTitle("Delete!!")
                 .setMessage("Are you sure want to remove it ?")
                 .setPositiveButton("Yes") { _, _ ->
                     viewModel.deleteFavorite(
-                        ProductListUi(
+                        ProductUi(
                             category = it,
                             description = it,
                             id = it,
@@ -74,6 +75,8 @@ class FavoritesFragment : Fragment() {
                 .setNegativeButton("No", null)
                 .show()
         }
+
+
 
     }
 

@@ -1,0 +1,14 @@
+package com.nurayyenilmez.ecommerceapp.domain
+
+import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
+import com.nurayyenilmez.ecommerceapp.data.repository.ProductRepository
+import javax.inject.Inject
+
+class DeleteCartProductUseCase @Inject constructor(private val productRepository: ProductRepository) {
+
+    suspend operator fun invoke(productUi: ProductUi) {
+        productRepository.deleteCartProduct(productUi)
+
+    }
+
+}

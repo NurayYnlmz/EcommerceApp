@@ -2,7 +2,7 @@ package com.nurayyenilmez.ecommerceapp.data.model
 
 import com.nurayyenilmez.ecommerceapp.data.remote.dto.Rating
 
-data class ProductListUi(
+data class ProductUi(
     val category: String?,
     val description: String?,
     val id:String?,

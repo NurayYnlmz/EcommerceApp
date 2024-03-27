@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">EcommerceApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="card_name">"please  enter card name"</string>
+    <string name="card_number">please enter card number\n</string>
+    <string name="error_month">please enter mouth</string>
+    <string name="error_year">please enter year</string>
+    <string name="error_cvv">please enter cvc\n</string>
+    <string name="error_address">please enter address</string>
 </resources>

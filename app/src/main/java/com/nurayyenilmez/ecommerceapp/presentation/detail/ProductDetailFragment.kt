@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nurayyenilmez.ecommerceapp.R
 import com.nurayyenilmez.ecommerceapp.common.addCurrencySign
+import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
 import com.nurayyenilmez.ecommerceapp.databinding.FragmentProductDetailBinding
 
 import com.squareup.picasso.Picasso
@@ -38,10 +40,10 @@ class ProductDetailFragment : Fragment() {
         obverseUi()
         viewModel.singleProduct(args.id)
 
+
         binding.back.setOnClickListener {
             findNavController().navigate(R.id.action_productDetailFragment_to_productListFragment)
         }
-
     }
     private fun obverseUi() {
         viewModel.productDetailUiState.observe(viewLifecycleOwner) {
@@ -57,16 +59,32 @@ class ProductDetailFragment : Fragment() {
             }}
     }
 
-    private fun productHandleSuccessResponse(data: UiDetailProduct) {
+    private fun productHandleSuccessResponse(product: UiDetailProduct) {
         with(binding){
-            favorite.setImageResource(if (data.isFavorite) R.drawable.delete_favorite else R.drawable.favorite)
-            favorite.setOnClickListener {data.onFavorite.invoke() }
-            productName.text=data.title
-            price.text=data.price.toString().addCurrencySign()
-            description.text=data.description
-            ratingBar.rating= data.rating?.rate?.toFloat()!!
-            ratingCount.text=data.rating.count.toString()
-            Picasso.get().load(data.image).into(productImage)
+            favorite.setImageResource(if (product.isFavorite) R.drawable.delete_favorite else R.drawable.favorite)
+            favorite.setOnClickListener {product.onFavorite.invoke() }
+            productName.text=product.title
+            price.text=product.price.toString().addCurrencySign()
+            description.text=product.description
+            ratingBar.rating= product.rating?.rate?.toFloat()!!
+            ratingCount.text=product.rating.count.toString()
+            Picasso.get().load(product.image).into(productImage)
+
+            binding.addToBag.setOnClickListener {
+                viewModel.addCartProduct(
+                        ProductUi(
+                            category = product.category,
+                            description = product.description,
+                            id = product.id,
+                            image = product.image,
+                            price = product.price,
+                            rating = product.rating,
+                            title = product.title
+                )
+                )
+                Toast.makeText(requireContext(), "Ürün Sepete Eklendi.", Toast.LENGTH_SHORT).show()
+
+            }
             }
 
             }

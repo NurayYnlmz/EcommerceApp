@@ -1,13 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.EcommerceApp"
-        parent="Theme.Material3.DayNight.NoActionBar">
+      parent="Theme.Material3.DayNight.NoActionBar">
 
-
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+-
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/yellow</item>
-        <item name="colorSecondaryContainer">@color/yellow</item>
-        <item name="colorOnSecondaryContainer">@color/ıcon</item>
+        <item name="colorPrimary">@color/app</item>
+        <item name="colorSecondaryContainer">@color/app</item>
+        <item name="colorOnSecondaryContainer">#EEE6E6</item>
     </style>
 
     <style name="Theme.EcommerceApp"

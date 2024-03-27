@@ -1,6 +1,8 @@
 package com.nurayyenilmez.ecommerceapp.data.source.local
 
+import com.nurayyenilmez.ecommerceapp.data.local.entity.CartProductEntity
 import com.nurayyenilmez.ecommerceapp.data.local.entity.FavoriteProductEntity
+import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
 import kotlinx.coroutines.flow.Flow
 
 
@@ -13,6 +15,11 @@ interface LocalDataSource {
     suspend fun deleteFavoriteProduct(favoriteProductEntity: FavoriteProductEntity)
 
 
+    fun getAllCartProduct():Flow<List<CartProductEntity>>
+
+    suspend fun addCartProduct(cartProductEntity: CartProductEntity)
+
+    suspend fun deleteCartProduct(cartProductEntity: CartProductEntity)
 
 
 }

@@ -14,7 +14,6 @@ class AllProductAdapter: RecyclerView.Adapter<ProductViewHolder>() {
     private val items= mutableListOf<UiProduct>()
 
      private var onProductItemClickListener:((String) ->Unit)?= null
-
     fun setOnProductItemClickListener( onProductItemClickListener:((String)->Unit)?){
         this.onProductItemClickListener=onProductItemClickListener
     }
@@ -27,11 +26,15 @@ class AllProductAdapter: RecyclerView.Adapter<ProductViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(
             ProductItemBinding.inflate(LayoutInflater.from(parent.context),parent,false),onProductItemClickListener)
+
+
     }
 
     override fun getItemCount()=items.size
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
        holder.bind(items[position])
+
+
     }
 }

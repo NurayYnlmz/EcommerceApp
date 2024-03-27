@@ -1,19 +1,15 @@
 package com.nurayyenilmez.ecommerceapp
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nurayyenilmez.ecommerceapp.databinding.ActivityMainBinding
-
-
-import com.nurayyenilmez.ecommerceapp.presentation.home.ProductListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -39,35 +35,41 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> navController.navigate(R.id.productListFragment)
-                R.id.favorites->navController.navigate(R.id.favoritesFragment)
-
+                R.id.favorites -> navController.navigate(R.id.favoritesFragment)
+                R.id.cart -> navController.navigate(R.id.cartFragment)
+               // R.id.payment->navController.navigate(R.id.payment)
+               // R.id.paymentSuccess->navController.navigate(R.id.paymentSuccess)
 
             }
             true
         }
 
-            navController.addOnDestinationChangedListener{_,destination,_ ->
-                when(destination.id){
-                    R.id.productListFragment,
-                        R.id.favoritesFragment->{
-                            binding.bottomNav.visibility=View.VISIBLE
-                    }
-                    else ->{
-                            binding.bottomNav.visibility=View.GONE
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.productListFragment,
+                R.id.cartFragment,
+                R.id.favoritesFragment,
+                R.id.cartFragment
+               // R.id.payment,
+              //  R.id.paymentSuccess
+                -> {
+                    binding.bottomNav.visibility = View.VISIBLE
+                }
+
+                else -> {
+                    binding.bottomNav.visibility = View.GONE
 
                 }
 
             }
 
-            }
+        }
 
 
-
-            }
-
+    }
 
 
-            }
+}
 
 
 

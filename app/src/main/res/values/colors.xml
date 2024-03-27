@@ -4,12 +4,16 @@
     <color name="white">#FFFFFFFF</color>
    <color name="button">#424242</color>
     <color name="gray1">#f6f6f6</color>
-    <color name="gray">#9c9c9c</color>
+    <color name="gray">#EDECEC</color>
     <color name="yellow">#FFEB3B</color>
+    <color name="mor">#673AB7</color>
     <color name="ıcon">#212121</color>
     <color name="red">#F44336</color>
     <color name="title_text">#EE5A5252</color>
-
+    <color name="delete">#605656</color>
+    <color name="oval">#323232</color>
+     <color name="app">#43B4AB</color>
+    <color name="empty">#CAC9C9</color>
 
 
 </resources>

@@ -1,16 +1,24 @@
 package com.nurayyenilmez.ecommerceapp.data.repository
 
 import com.nurayyenilmez.ecommerceapp.common.ResponseState
-import com.nurayyenilmez.ecommerceapp.data.model.ProductListUi
+import com.nurayyenilmez.ecommerceapp.data.local.entity.CartProductEntity
+import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
 import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {
 
-      suspend fun getAllProduct():Flow<ResponseState<List<ProductListUi>>>
-       suspend fun getSingleProduct(id:String):Flow<ResponseState<ProductListUi>>
+      suspend fun getAllProduct():Flow<ResponseState<List<ProductUi>>>
+       suspend fun getSingleProduct(id:String):Flow<ResponseState<ProductUi>>
 
-       suspend fun getAllFavoritesProduct():Flow<List<ProductListUi>>
-       suspend fun addFavorites(productListUi: ProductListUi)
-       suspend fun deleteFavorites(productListUi: ProductListUi)
+       suspend fun getAllFavoritesProduct():Flow<List<ProductUi>>
+       suspend fun addFavorites(productListUi: ProductUi)
+       suspend fun deleteFavorites(productListUi: ProductUi)
+
+    fun getAllCartProduct():Flow<List<ProductUi>>
+
+    suspend fun addCartProduct(productUi:ProductUi)
+
+    suspend fun deleteCartProduct(productUi:ProductUi)
+
 
 }

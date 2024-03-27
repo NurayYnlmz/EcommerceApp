@@ -3,12 +3,12 @@ package com.nurayyenilmez.ecommerceapp.presentation.favorites.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nurayyenilmez.ecommerceapp.data.model.ProductListUi
+import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
 import com.nurayyenilmez.ecommerceapp.databinding.FavoriteItemBinding
 
 class FavoriteProductAdapter:RecyclerView.Adapter<FavoriteViewHolder>() {
 
-    val item= mutableListOf<ProductListUi>()
+    val item= mutableListOf<ProductUi>()
 
     private var onFavoriteDeleteClickListener:((String) ->Unit)?= null
 
@@ -16,9 +16,10 @@ class FavoriteProductAdapter:RecyclerView.Adapter<FavoriteViewHolder>() {
         this. onFavoriteDeleteClickListener= onFavoriteDeleteClickListener
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         return FavoriteViewHolder(FavoriteItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-            ,onFavoriteDeleteClickListener)
+            ,onFavoriteDeleteClickListener,)
 
     }
 
@@ -28,7 +29,7 @@ class FavoriteProductAdapter:RecyclerView.Adapter<FavoriteViewHolder>() {
         holder.bind(item[position])
     }
 
-    fun updateFavoriteProduct(newItem: List<ProductListUi>){
+    fun updateFavoriteProduct(newItem: List<ProductUi>){
         item.clear()
         item.addAll(newItem)
         notifyDataSetChanged()
