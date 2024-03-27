@@ -37,8 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> navController.navigate(R.id.productListFragment)
                 R.id.favorites -> navController.navigate(R.id.favoritesFragment)
                 R.id.cart -> navController.navigate(R.id.cartFragment)
-               // R.id.payment->navController.navigate(R.id.payment)
-               // R.id.paymentSuccess->navController.navigate(R.id.paymentSuccess)
+                R.id.profile -> navController.navigate(R.id.profileFragment)
 
             }
             true
@@ -49,9 +48,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.productListFragment,
                 R.id.cartFragment,
                 R.id.favoritesFragment,
-                R.id.cartFragment
-               // R.id.payment,
-              //  R.id.paymentSuccess
+                R.id.cartFragment,
+                R.id.profileFragment
                 -> {
                     binding.bottomNav.visibility = View.VISIBLE
                 }

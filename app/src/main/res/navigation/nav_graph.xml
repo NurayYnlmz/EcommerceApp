@@ -72,4 +72,9 @@
             android:id="@+id/action_paymentSuccess_to_productListFragment"
             app:destination="@id/productListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.nurayyenilmez.ecommerceapp.presentation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
