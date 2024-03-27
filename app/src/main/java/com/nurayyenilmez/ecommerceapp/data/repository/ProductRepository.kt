@@ -20,5 +20,5 @@ interface ProductRepository {
 
     suspend fun deleteCartProduct(productUi:ProductUi)
 
-
+    suspend fun deleteAllCart()
 }

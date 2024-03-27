@@ -21,5 +21,6 @@ interface LocalDataSource {
 
     suspend fun deleteCartProduct(cartProductEntity: CartProductEntity)
 
+    suspend fun deleteAllCart()
 
 }

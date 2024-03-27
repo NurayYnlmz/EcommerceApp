@@ -17,21 +17,22 @@
 
     </ImageView>
 
+
     <TextView
         android:id="@+id/emptyBasket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:gravity="center"
         android:text="Sepetinizde ürün bulunmamaktadır."
         android:textColor="@color/empty"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/basket">
+        app:layout_constraintTop_toBottomOf="@id/basket"
+        app:layout_constraintVertical_bias="0.14">
 
     </TextView>
-
 
     <ImageView
         android:id="@+id/title_image"

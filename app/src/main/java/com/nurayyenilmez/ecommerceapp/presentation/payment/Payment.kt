@@ -12,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.nurayyenilmez.ecommerceapp.R
 import com.nurayyenilmez.ecommerceapp.databinding.FragmentPaymentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Payment : Fragment() {
 
     private lateinit var binding: FragmentPaymentBinding

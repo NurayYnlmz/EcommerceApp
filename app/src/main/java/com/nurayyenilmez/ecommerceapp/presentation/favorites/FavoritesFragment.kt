@@ -45,11 +45,16 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun observeData() {
-        viewModel.favoriteProduct.observe(
-            viewLifecycleOwner
-        ) {
+        viewModel.favoriteProduct.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), "${it.size}", Toast.LENGTH_SHORT).show()
             favoriteAdapter.updateFavoriteProduct(it)
+            if (it.isEmpty()){
+                binding.favorite.visibility=View.VISIBLE
+                binding.emptyFavorite.visibility=View.VISIBLE
+            }else{
+                binding.favorite.visibility=View.GONE
+                binding.emptyFavorite.visibility=View.GONE
+            }
         }
     }
 

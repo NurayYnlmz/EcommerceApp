@@ -39,6 +39,9 @@ class LocalDataSourceImpl @Inject constructor(
       cartDao.deleteCartProduct(cartProductEntity)
     }
 
+    override suspend fun deleteAllCart() {
+        cartDao.deleteAllCart()
+    }
 
 
 }

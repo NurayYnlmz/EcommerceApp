@@ -67,6 +67,10 @@ class ProductRepositoryImpl @Inject constructor(
         localDataSource.deleteCartProduct(productUi.toCartProductEntity())
     }
 
+    override suspend fun deleteAllCart() {
+        localDataSource.deleteAllCart()
+    }
+
 
 }
 
