@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/productListFragment">
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/productListFragment"
@@ -40,25 +40,10 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/cartFragment"
-        android:name="com.nurayyenilmez.ecommerceapp.presentation.cart.CartFragment"
-        android:label="CartFragment" >
-        <action
-            android:id="@+id/action_cartFragment_to_payment"
-            app:destination="@id/payment" />
-        <action
-            android:id="@+id/action_cartFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
-
-    </fragment>
-    <fragment
         android:id="@+id/payment"
         android:name="com.nurayyenilmez.ecommerceapp.presentation.payment.Payment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" >
-        <action
-            android:id="@+id/action_payment_to_cartFragment"
-            app:destination="@id/cartFragment" />
         <action
             android:id="@+id/action_payment_to_paymentSuccess"
             app:destination="@id/paymentSuccess" />
@@ -70,11 +55,30 @@
         tools:layout="@layout/fragment_payment_success" >
         <action
             android:id="@+id/action_paymentSuccess_to_productListFragment"
-            app:destination="@id/productListFragment" />
+            app:destination="@id/productListFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/paymentSuccess"/>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.nurayyenilmez.ecommerceapp.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.nurayyenilmez.ecommerceapp.presentation.cart.CartFragment"
+        android:label="CartFragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_payment"
+            app:destination="@id/payment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.nurayyenilmez.ecommerceapp.presentation.home.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
 </navigation>

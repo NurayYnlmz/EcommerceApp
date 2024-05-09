@@ -1,5 +1,7 @@
 package com.nurayyenilmez.ecommerceapp.data.source.local
 
+import androidx.room.Query
+import androidx.room.Update
 import com.nurayyenilmez.ecommerceapp.data.local.entity.CartProductEntity
 import com.nurayyenilmez.ecommerceapp.data.local.entity.FavoriteProductEntity
 import com.nurayyenilmez.ecommerceapp.data.model.ProductUi
@@ -22,5 +24,7 @@ interface LocalDataSource {
     suspend fun deleteCartProduct(cartProductEntity: CartProductEntity)
 
     suspend fun deleteAllCart()
+
+    suspend fun updateCartProduct(cartProductEntity: CartProductEntity)
 
 }

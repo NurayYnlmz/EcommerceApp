@@ -14,7 +14,8 @@ data class FavoriteProductEntity (
     val rating: Rating?,
     val title: String?,
     val category: String?,
-    val description: String?
+    val description: String?,
+ //   var productQuantity:Int
 )
 @Entity(tableName = "rating")
 data class Rating(

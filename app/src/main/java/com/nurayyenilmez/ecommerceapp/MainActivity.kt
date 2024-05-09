@@ -10,6 +10,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nurayyenilmez.ecommerceapp.databinding.ActivityMainBinding
+
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -23,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
         navController = navHostFragment.navController
@@ -36,24 +36,25 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.home -> navController.navigate(R.id.productListFragment)
                 R.id.favorites -> navController.navigate(R.id.favoritesFragment)
-                R.id.cart -> navController.navigate(R.id.cartFragment)
+                R.id.basket -> navController.navigate(R.id.cartFragment)
                 R.id.profile -> navController.navigate(R.id.profileFragment)
 
             }
             true
         }
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
+
+
+
+       navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.productListFragment,
                 R.id.cartFragment,
                 R.id.favoritesFragment,
-                R.id.cartFragment,
-                R.id.profileFragment
+                R.id.profileFragment,
                 -> {
                     binding.bottomNav.visibility = View.VISIBLE
                 }
-
                 else -> {
                     binding.bottomNav.visibility = View.GONE
 
@@ -64,10 +65,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-    }
 
 
-}
+            }
+
+
+        }
+
 
 
 

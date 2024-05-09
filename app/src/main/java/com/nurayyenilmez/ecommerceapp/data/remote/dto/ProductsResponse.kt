@@ -16,7 +16,8 @@ data class ProductsResponse(
     @SerializedName("rating")
     val rating: Rating?,
     @SerializedName("title")
-    val title: String?
+    val title: String?,
+    var productQuantity:Int
 
 
 )

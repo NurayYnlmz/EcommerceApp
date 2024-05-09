@@ -9,5 +9,8 @@ data class ProductUi(
     val image: String?,
     val price: Double?,
     val rating: Rating?,
-    val title: String?
+    val title: String?,
+    var productQuantity:Int=1
+
+
 )

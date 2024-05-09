@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:gravity="center"
-        android:text="Favorilerde ürün bulunmamaktadır."
+        android:text="Empty!!"
         android:textColor="@color/empty"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

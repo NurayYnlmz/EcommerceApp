@@ -1,5 +1,6 @@
 package com.nurayyenilmez.ecommerceapp.data.source.local
 
+import androidx.room.Query
 import com.nurayyenilmez.ecommerceapp.data.local.CartDao
 import com.nurayyenilmez.ecommerceapp.data.local.FavoriteDao
 import com.nurayyenilmez.ecommerceapp.data.local.entity.CartProductEntity
@@ -26,23 +27,29 @@ class LocalDataSourceImpl @Inject constructor(
     }
 
     override fun getAllCartProduct(): Flow<List<CartProductEntity>> {
-       return cartDao.getAllCartProduct()
+        return cartDao.getAllCartProduct()
 
     }
 
 
     override suspend fun addCartProduct(cartProductEntity: CartProductEntity) {
-       cartDao.addCartProduct(cartProductEntity)
+        cartDao.addCartProduct(cartProductEntity)
     }
 
     override suspend fun deleteCartProduct(cartProductEntity: CartProductEntity) {
-      cartDao.deleteCartProduct(cartProductEntity)
+        cartDao.deleteCartProduct(cartProductEntity)
     }
 
     override suspend fun deleteAllCart() {
         cartDao.deleteAllCart()
     }
 
+    override suspend fun updateCartProduct(cartProductEntity: CartProductEntity) {
+        cartDao.updateCartProduct(cartProductEntity)
+
+    }
 
 }
+
+
 

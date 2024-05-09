@@ -46,7 +46,6 @@ class FavoritesFragment : Fragment() {
 
     private fun observeData() {
         viewModel.favoriteProduct.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "${it.size}", Toast.LENGTH_SHORT).show()
             favoriteAdapter.updateFavoriteProduct(it)
             if (it.isEmpty()){
                 binding.favorite.visibility=View.VISIBLE
@@ -57,7 +56,6 @@ class FavoritesFragment : Fragment() {
             }
         }
     }
-
     private fun initAdapter() {
         binding.favoriteRecyclerView.adapter = favoriteAdapter
         favoriteAdapter.setOnFavoriteDeleteClickListener {
@@ -73,7 +71,9 @@ class FavoritesFragment : Fragment() {
                             image = it,
                             price = it.toDouble(),
                             rating = null,
-                            title = it
+                            title = it,
+                            productQuantity = it.toInt()
+
                         )
                     )
                 }

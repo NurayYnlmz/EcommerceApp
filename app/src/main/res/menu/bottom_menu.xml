@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/home"
         android:icon="@drawable/home"
+      app:showAsAction="ifRoom"
         android:title="Home" />
     <item
         android:id="@+id/favorites"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/favorite"
         android:title="Favorites" />
     <item
-        android:id="@+id/cart"
+        android:id="@+id/basket"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/shopping_cart"
         android:title="Basket" />
 
     <item
         android:id="@+id/profile"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/profile"
         android:title="Profile" />
 </menu>

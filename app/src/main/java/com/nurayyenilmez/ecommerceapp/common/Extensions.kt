@@ -19,7 +19,9 @@ fun ProductsResponse.toProductList(): ProductUi {
         image = image,
         price = price,
         rating = rating,
-        title = title
+        title = title,
+        productQuantity = productQuantity
+
     )
 
 
@@ -34,7 +36,9 @@ fun ProductsResponse.toFavoriteProduct(): ProductUi {
         price = price,
         rating = rating,
         title = title,
-        category = category
+        category = category,
+        productQuantity = productQuantity
+
     )
 }
 
@@ -47,9 +51,11 @@ fun FavoriteProductEntity.toFavoriteProduct(): ProductUi {
         title = title,
         rating = rating,
         category = category,
-        description = description
+        description = description,
+
     )
 }
+
 
 fun ProductUi.toFavoriteProductEntity(): FavoriteProductEntity {
     return FavoriteProductEntity(
@@ -59,7 +65,8 @@ fun ProductUi.toFavoriteProductEntity(): FavoriteProductEntity {
         title = title,
         rating = rating,
         category = category,
-        description = description
+        description = description,
+
     )
 }
 
@@ -71,12 +78,15 @@ fun CartProductEntity.toCartProduct(): ProductUi {
         price = price?.toDouble(),
         title = title,
         rating = rating,
-        category =category,
-        description = description
+        category = category,
+        description = description,
+        productQuantity = productQuantity
+
+
     )
 }
 
-fun ProductUi.toCartProductEntity():CartProductEntity{
+fun ProductUi.toCartProductEntity(): CartProductEntity {
     return CartProductEntity(
         id = id!!.toInt(),
         image = image,
@@ -84,7 +94,9 @@ fun ProductUi.toCartProductEntity():CartProductEntity{
         title = title,
         rating = rating,
         category = category,
-        description = description
+        description = description,
+        productQuantity = productQuantity
+
     )
 }
 

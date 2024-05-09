@@ -26,10 +26,10 @@ class PaymentSuccess : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-         viewModel.deleteAllCart()
         binding.paymentSuccess.setOnClickListener {
-           val action= PaymentSuccessDirections.actionPaymentSuccessToProductListFragment()
-            findNavController().navigate(action)
+            findNavController().navigate(R.id.action_paymentSuccess_to_productListFragment)
+            viewModel.deleteAllCart()
+
 
         }
     }

@@ -12,9 +12,10 @@
     <color name="title_text">#EE5A5252</color>
     <color name="delete">#605656</color>
     <color name="oval">#323232</color>
-     <color name="app">#43B4AB</color>
+     <color name="appp">#43B4AB</color>
     <color name="empty">#CAC9C9</color>
     <color name="profile">#9A9393</color>
+    <color name="app">#7747D1</color>
 
 
 </resources>

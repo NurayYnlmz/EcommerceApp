@@ -12,7 +12,7 @@
         android:id="@+id/check_marks"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/check_marks"
+        android:src="@drawable/check"
         app:layout_constraintBottom_toTopOf="@id/paymentSuccess"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"></ImageView>

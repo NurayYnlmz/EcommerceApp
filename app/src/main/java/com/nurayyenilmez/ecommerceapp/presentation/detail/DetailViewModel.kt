@@ -24,7 +24,7 @@ class DetailViewModel @Inject constructor(
     private val addFavoritesUseCase: AddFavoritesUseCase,
     private val getFavoritesUseCase: GetFavoritesUseCase,
     private val deleteFavoritesUseCase: DeleteFavoritesUseCase,
-     private val addCartProductUseCase: AddCartProductUseCase
+    private val addCartProductUseCase: AddCartProductUseCase
 ) : ViewModel() {
 
     private val _productDetailUiState = MutableLiveData<ProductDetailUiState>()
@@ -58,6 +58,7 @@ class DetailViewModel @Inject constructor(
                             rating = productResponse.data.rating,
                             title = productResponse.data.title,
                             isFavorite = isFavorite,
+                            productQuantity = productResponse.data.productQuantity,
                             onFavorite = {
                                 updateFavoriteProduct(
                                     favorite = isFavorite,
@@ -87,12 +88,12 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-        fun addCartProduct(product: ProductUi){
-            viewModelScope.launch {
-                addCartProductUseCase(product)
-            }
-
+    fun addCartProduct(product: ProductUi) {
+        viewModelScope.launch {
+            addCartProductUseCase(product)
         }
+
+    }
 
 }
 
@@ -111,8 +112,9 @@ data class UiDetailProduct(
     val price: Double?,
     val rating: Rating?,
     val title: String?,
+    var productQuantity:Int=1,
     val isFavorite: Boolean,
-    val onFavorite: () -> Unit
+    val onFavorite: () -> Unit,
 )
 
 

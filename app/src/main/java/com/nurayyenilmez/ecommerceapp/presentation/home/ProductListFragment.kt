@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nurayyenilmez.ecommerceapp.databinding.FragmentProductListBinding
+import com.nurayyenilmez.ecommerceapp.presentation.cart.CartFragment
 import com.nurayyenilmez.ecommerceapp.presentation.home.adapter.AllProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -68,7 +69,6 @@ class ProductListFragment : Fragment() {
             GridLayoutManager(requireContext(), 2)
     }
 }
-
 
 
 

@@ -38,32 +38,30 @@ class Payment : Fragment() {
         yearAutoComplete()
 
         binding.cardBack.setOnClickListener {
-            findNavController().navigate(R.id.action_payment_to_cartFragment)
+            findNavController().navigateUp()
 
         }
-        binding.pay.setOnClickListener {
+        binding.payNow.setOnClickListener {
             if (checkCardInfo(
                     binding.textInputEditTextCardName,
                     binding.textInputEditTextCardNumber,
                     binding.monthAutoComplete,
                     binding.yearAutoComplete,
                     binding.paymentCvvEditText,
-                    binding.textInputEditTextAddress
-                )
-            ) {
-                val action = PaymentDirections.actionPaymentToPaymentSuccess()
-                findNavController().navigate(action)
-            }
+                    binding.textInputEditTextAddress))
+
+                findNavController().navigate(R.id.action_payment_to_paymentSuccess)
+
         }
     }
 
     private fun yearAutoComplete() {
-        val yearAdapter = ArrayAdapter(requireContext(), R.layout.item_dropdown_menu, yearList)
+        val yearAdapter=ArrayAdapter(requireContext(),R.layout.item_dropdown_menu,yearList)
         binding.yearAutoComplete.setAdapter(yearAdapter)
-        binding.yearAutoComplete.setOnItemClickListener { _, _, position, id ->
-            yearList[position]
+        binding.yearAutoComplete.onItemClickListener=AdapterView.OnItemClickListener { _, _, position, id ->
+         yearList[position]
         }
-    }
+        }
 
     private fun monthAutoComplete() {
         val monthAdapter = ArrayAdapter(requireContext(), R.layout.item_dropdown_menu, monthList)
@@ -90,7 +88,7 @@ class Payment : Fragment() {
 
     }
 
-    
+
     fun AutoCompleteTextView.validateCartMonthAndYear(
         errorMessage: String,
         textField: AutoCompleteTextView
